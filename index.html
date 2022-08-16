@@ -8,466 +8,215 @@
   <script src="tooling/smpte.js"></script>
   <link rel="stylesheet" href="tooling/smpte.css" />
   <meta itemprop="pubType" content="AG" />
-  <meta itemprop="pubNumber" content="25" />
+  <meta itemprop="pubNumber" content="22" />
   <meta itemprop="pubState" content="published" />
-  <meta itemprop="pubDateTime" content="2022-07-05" />
-  <title>Use of JSON in Engineering Documents</title>
+  <meta itemprop="pubDateTime" content="2020-10-12" />
+  <title>Public Committee Draft (Public CD) Process</title>
 </head>
 
 <body>
 
-  <section id="sec-foreword"></section>
+  <section id="sec-foreword" class="unnumbered"></section>
+
+  <section id="sec-toc" class="unnumbered"></section>
 
   <section id="sec-scope">
     <h2>Scope</h2>
-    <p>This Administrative Guideline specifies selected uses of the JavaScript Object Notation (JSON) in SMPTE
-      Engineering Documents.</p>
+    <p>This Administrative Guideline specifies the process for Public Committee Drafts (Public CD), which are Committee Drafts made available to the public for review.</p>
+
+    <p class="note">A Public CD was referred to as a Technical Specification between 2018 and 2019.</p>
   </section>
 
   <section id="sec-conformance"></section>
 
   <section id="sec-normative-references">
     <ul>
-      <li><cite id="bib-ietf-rfc-3986">IETF RFC 3986</cite>, Uniform Resource
-      Identifiers (URI): Generic Syntax, T. Berners-Lee, et al., January 2005.
-      http://www.ietf.org/rfc/rfc3986.txt</li>
-      <li><cite id="bib-ietf-rfc-5234">IETF RFC 5234</cite>, “Augmented BNF for
-      Syntax Specifications: ABNF”, D. Crocker, January 2008.
-      https://www.rfc-editor.org/rfc/rfc5234.txt</li>
-      <li><cite id="bib-ietf-rfc-7405">IETF RFC 7405</cite>, “Case-Sensitive
-      String Support in ABNF”, P. Kyzivat, December 2014.
-      https://datatracker.ietf.org/doc/html/rfc7405.txt</li>
-      <li><cite id="bib-ietf-rfc-8259">IETF RFC 8259</cite>, The JavaScript
-      Object Notation (JSON) Data Interchange Format, T. Bray,
-      http://www.ietf.org/rfc/rfc8259.txt</li>
+      <li><cite id="bib-smpte-standards-operation-manual-v31">SMPTE Standards Operation Manual v3.1</cite>
+      <a>https://f.hubspotusercontent00.net/hubfs/5253154/SMPTE%20Standards%20OM%20v3.1.pdf</a></li>
     </ul>
   </section>
 
-  <section id="sec-smpte-json-structures">
-    <h2>SMPTE JSON structures</h2>
-    <section>
-      <h3>Overview (informative)</h3> 
-      The JSON Schema resource applicable to a JSON structure can specify constraints to which the structure is expected to conform.
-    </section>
-    
-    <section>
-      <h3>SMPTE JSON Structures</h3>
-      
-      <p>
-        A SMPTE JSON structure is any data structure that (a) is specified by an
-        Engineering Document and (b) conforms to <a
-        href="#bib-ietf-rfc-8259"></a> (i.e., a JSON document), whether within
-        the prose or as an Additional Element.
-      </p>
-      
-      <p>
-        The structure of each SMPTE JSON structure shall be normatively specified
-        the Engineering Document.
-      </p>
-      <p>
-        Each SMPTE JSON structure should be informatively specified by a JSON Schema
-        resource, which may be a SMPTE JSON Schema resource (see section 5), using
-        the JSON Schema language as specified in <a href="#bib-draft-bhutton-json-schema-00"></a>.
-      </p>
-    </section>
-    
-    <section>
-      <h3>Encoding</h3>
-      
-      <p>A SMPTE JSON structure is encoded using UTF-8 and does not include a
-      byte order mark (BOM), as specified in <a
-      href="#bib-ietf-rfc-8259"></a>.</p>
-    </section>
-    
-    <section>
-      <h3>Example Instances</h3>
-      
-      <p>All example instance JSON structures shall be informative.</p>
-      
-      <p>All example instance SMPTE JSON structures shall be valid with respect to
-      the corresponding SMPTE JSON Schema resource, where one is provided.</p>
-      
-      <p>If a SMPTE JSON Schema resource is provided, it should be used to
-      validate each corresponding example instance SMPTE JSON structure, as a test
-      of both the instance and the resource.</p>
-    </section>
-    
+  <section id="sec-terms-and-definitions">
+    <h2>Terms and Definitions</h2>
+    <p>For the purposes of this document, the terms and definitions given in SMPTE <a href="#bib-smpte-standards-operation-manual-v31"></a> apply.</p>
+
   </section>
 
-<section>
-  <h2>SMPTE JSON Schema resources</h2>
-  
-  <section>
-    <h3>Introduction (informative)</h3>
-    
-    <p>Using the formal language of JSON Schema, descriptions of conformance
-    requirements for JSON structures can avoid some of the ambiguity inherent with
-    using English prose alone, while allowing the use of existing commercial tools
-    to facilitate testing and validation. It can also represent a significant
-    convenience to implementers, for example by supporting the ability to
-    automatically validate structures.</p>
-    
-    <p>A JSON Schema resource is identified by its canonical URI. Canonical URIs
-    provide an unambiguous and human-readable link to the specifications define
-    these schemas.</p>
-    
-    <p>Where a JSON Schema resource relies on another JSON Schema resource to
-    specify constraints on substructures, the other JSON Schema is identified by its
-    canonical URI.  </p>
-  </section>
-  
-  <section>
-    <h3>Canonical URI</h3>
-    
-    <section id="sec-id-keyword">
-      <h4><code>$id</code> Keyword</h4>
-      
-      <p>A SMPTE JSON Schema resource shall use the <code>$id</code> keyword in the root schema
-      object, thereby providing the canonical URI for the JSON root schema.</p>
-    </section>
-    
+  <section id="sec-abbreviated-terms">
+    <h2>Abbreviated Terms</h2>
+
     <section>
-      <h4>Canonical URI Syntax</h4>
-      
-      The canonical URI shall conform to the <code>SCHEMAID</code> syntax below,
-      specified using <a href="#bib-ietf-rfc-5234"></a> and <a
-      href="#bib-ietf-rfc-7405"></a> and conforming to <a
-      href="#bib-ietf-rfc-3986"></a>.
-      
-<pre>
-SCHEMAID = %s"https://www.smpte-ra.org/json-schema/" PUBNUM "/" REVISION [ "/" SHORTNAME]
-SHORTNAME = 1*4("/" 1*(ALPHA / DIGIT / "-" / "_" / ".") )
-PUBNUM = 1*(DIGIT) ["-" 1*(DIGIT)]
-REVISION = STABLEREV
-STABLEREV = 4(DIGIT) [2(DIGIT)]
-</pre>
-      
-      <p><code>PUBNUM</code> shall represent the official publication number of the
-      Engineering Document, without leading zeroes and including a part number, if
-      any, separated by a hyphen, e.g., 456-1.</p>
-      
-      <p><code>SHORTNAME</code> is used when the Engineering Document defines more
-      than one JSON Schema. It may provide a human meaningful designation of the
-      schema, but shall not include any version information.</p>
-      
-      <p>A stable SMPTE JSON Schema canonical URI is a SMPTE JSON Schema
-      canonical URI whose name is such that <code>REVISION</code>:</p>
+      <h3><dfn>Public CD</dfn></h3> 
+      <p>Public Committee Draft</p>
+    </section>
+
+  </section>
+
+  <section id="sec-public-cd-development">
+    <h2>Public CD Development</h2>
+
+    <section id="sec-general">
+      <h3>General (Informative)</h3> 
+
+      <p>The development of a <a>Public CD</a> is conducted according to the SMPTE <a href="#bib-smpte-standards-operation-manual-v31"></a>, including, but not limited to:</p>
       <ul>
-        <li>conforms to <code>STABLEREV</code>, which consists of a year encoded as 4 decimal
-        digits, optionally followed by a month encoded as 2 decimal digits in the
-        range 01-12; and</li>
-        <li>represents the date that the JSON Schema canonical URI first appeared in
-        the Engineering Document, which might be as a Public Committee Draft.</li>
+        <li>the decision to make a Committee Draft available to the public rests with the Standards Vice President (<a href="#bib-smpte-standards-operation-manual-v31"></a>, Section 9.3.1);</li>
+        <li>contributions to a Public CD are subject to intellectual property and confidentiality policy specified
+in <a href="#bib-smpte-standards-operation-manual-v31"></a>, Section 9;</li>
+        <li>decisions are based on consensus, as defined in <a href="#bib-smpte-standards-operation-manual-v31"></a>, Section 4.1;</li>
+        <li>the Project Group can return the Public CD to the Technology Committee Chair for FCD ballot at
+any time (<a href="#bib-smpte-standards-operation-manual-v31"></a>, Section 6.5).</li>
+      </ul>
+      <p><a href="#sec-process-flowchart"></a> illustrates an example of the <a>Public CD</a> process, as specified by this document.</p>
+
+    </section>
+
+    <section id="sec-project-proposal">
+      <h3>Project Proposal</h3> 
+
+      <p>A Project Proposal should indicate whether a deliverable is intended to become a <a>Public CD</a>.</p>
+
+    </section>
+
+    <section id="sec-creation">
+      <h3>Creation</h3> 
+
+      <p>Any Committee Draft may be made available as a <a>Public CD</a> if it meets the following criteria:</p>
+      <ul>
+        <li>the Committee Draft has not been previously made available as a <a>Public CD</a> and subsequently terminated, as specified in <a href="#sec-termination"></a>.</li>
+        <li>by Consensus and usually following a recommendation of a Project Group, the TC has recommended to the Standards Vice President that the Committee Draft be made available as a <a>Public CD</a>.</li>
+      </ul>
+      <p>The TC recommendation should include a brief text appropriate for a public announcement of the <a>Public CD</a>.</p>
+      <p>When seeking the TC recommendation, the TC chair should use the notice specified in <a href="#sec-tc-recommendation"></a>.</p>
+
+    </section>
+
+    <section id="sec-availability">
+      <h3>Availability</h3> 
+
+      <p>The <a>Public CD</a> shall be made available to the public in a form approved by the Director of Standards Development and shall be accompanied by the notices specified in <a href="#sec-availability-notices"></a>.</p>
+
+    </section>
+
+    <section id="sec-comment-period">
+      <h3>Comment Period</h3> 
+
+      <p>A Project Group should, but is under no obligation to, address comments received from the public on a <a>Public CD</a>.</p>
+      <p>The review period of a <a>Public CD</a> starts upon availability, as defined in <a href="#sec-availability"></a>, and ends when either:</p>
+      <ul>
+        <li>the document begins its FCD ballot (<a href="#bib-smpte-standards-operation-manual-v31"></a>, Section 6.6), at which point the notice specified in <a href="#sec-notice-of-fcd"></a> shall be displayed prominently alongside the <a>Public CD</a>; or</li>
+        <li>the <a>Public CD</a> is terminated.</li>
       </ul>
       
-      <p class="note">The <code>REVISION</code> component of a stable SMPTE JSON
-      Schema canonical URI does not necessarily correspond to the publication
-      date of its defining Engineering Document. For instance, the defining
-      Engineering Document can be revised in such a way that the contents of the
-      JSON Schema remain unchanged.</p>
-      
-      <p class="note">
-        No changes to SMPTE JSON Schema canonical URI are necessary following a Draft
-        Publication ballot since SMPTE JSON Schema canonical URI are constructed
-        independently of the publication date of the Engineering Document.
-      </p>
+
     </section>
-    
-    <section>
-      <h4>Examples (informative)</h4>
-      The following is an example SMPTE JSON Schema resource canonical URI:
-      
-      <pre>https://www.smpte-ra.org/json-schema/456/2021/foo</pre>
-      
-      <p>One can immediately see that the schema "foo" is defined in a SMPTE
-      Engineering Document numbered "456" and initially appeared in the year "2021".
-      One would assume that a "foo" was a well-known artifact to SMPTE members, at
-      least for those that have read Engineering Document number "456". </p>
-      
-      <p>The following is an example SMPTE JSON Schema resource canonical URI, defined
-      in a document with a part designation and that originally appeared in September
-      of 2022:</p>
-      
-      <pre>https://www.smpte-ra.org/json-schema/456-1/202209/foo</pre>
-      
-      <p>The following is a SMPTE JSON Schema resource canonical URI defined in a
-      draft version of the same specification:</p>
-      
-      <pre>https://www.smpte-ra.org/json-schema/456-1/experimental-20211001/foo</pre>
-      
-      <p>The following is not equivalent to the previous name since it is missing the
-      string "www" (though the two URIs can nevertheless resolve to the same resource
-      when used in an HTTP GET query):</p>
-      
-      <pre>https://smpte-ra.org/json-schema/456-1/experimental-20141001/</pre>
-      
-      <p>The following is not a valid SMPTE JSON Schema resource canonical URI,
-      since a fragment is used:</p>
-      
-      <pre>https://www.smpte-ra.org/json-schema/456-1/experimental-20141001/foo#hello</pre>
+
+    <section id="sec-revision">
+      <h3>Revision</h3> 
+
+      <p>A <a>Public CD</a> may be revised at any time.</p>
+      <p>To revise a <a>Public CD</a>, the Committee Draft shall be revised.</p>
+      <p>Revising a Committee Draft returns the document to Working Draft status and the process at <a href="#bib-smpte-standards-operation-manual-v31"></a>, Section 6.5 is followed to elevate the revised Working Draft to Committee Draft.</p>
+      <p>The revised Committee Draft may follow the process of <a href="#sec-creation"></a> to be made available as a <a>Public CD</a>.</p>
+
     </section>
-    
-    <section>
-      <h4>Registration (informative)</h4>
-      
-      <p>
-        The SMPTE JSON Schema resource canonical URI syntax ensures uniqueness across
-        Engineering Documents, and thus no specific registration steps are required.
-      </p>
+
+    <section id="sec-termination">
+      <h3>Termination</h3> 
+
+      <p>A <a>Public CD</a> shall be terminated if any one of the following criteria is satisfied:</p>
+      <ul>
+        <li>the engineering document is published (see <a href="#bib-smpte-standards-operation-manual-v31"></a>, Section 6.11)</li>
+        <li>the Committee Draft of the document is revised</li>
+        <li>more than 1095 days have elapsed since the document was initially made available as a <a>Public CD</a>, unless the Standards Vice President elects to extend the period upon recommendation of the TC</li>
+        <li>the Project authorizing the engineering document is terminated</li>
+      </ul>
+      <p>Upon termination of a <a>Public CD</a>, its public access to shall be immediately terminated.</p>
+
     </section>
-  </section>
-  
-  <section>
-    <h3>Change Policy</h3>
-    
-    An Engineering Document that defines a SMPTE JSON Schema resource should specify
-    whether the schema is mutable, i.e., whether the schema is allowed to change
-    substantially over time without also changing the canonical URI of the SMPTE
-    JSON Schema resource.
-  </section>
-  
-  <section>
-    <h3>Using a SMPTE JSON Schema Resource</h3>
-    
-    <p>A SMPTE JSON Schema resource can be used informatively by an Engineering
-    Document, either by inclusion or by reference.</p>
-    
-    <p class="note">The current specification of JSON Schema, though well-supported, is not a
-    normatively referenceable document per the Standards Operations Manual (section
-    10 Normative References) and AG-03. Thus, provision of SMPTE JSON Schema
-    resources, at this time, is strictly informative.</p>
-  </section>
-  
-  <section>
-    <h3>Precedence</h3>
-    
-    <p>
-      Engineering Documents normatively describe the constraints on a SMPTE JSON
-      structure, including names and values, by their prose. Any Engineering Document
-      providing a SMPTE JSON Schema resource to help validate a structure against
-      those constraints should point out that, in case of a conflict between prose and
-      the JSON Schema resource, the prose takes precedence.
-    </p>
-  </section>
-  
-  <section>
-    <h3>Avoiding Discrepancies</h3>
-    
-    <p>
-      To help avoid discrepancies between the English prose and a SMPTE JSON Schema
-      resource, prose sections should be bound to the related portion of the resource,
-      so that one cannot be modified without the other.
-    </p>
-    
-    <p class="note">
-      One method to bind prose to a SMPTE JSON Schema resource is to include the
-      resource definitions inline within the prose. Another method is for the prose to
-      refer to SMPTE JSON Schema resources specified in appendices or Additional
-      Elements.
-    </p>
-    
-    <p>
-      Any Additional Element that duplicates a SMPTE JSON Schema resource specified in
-      the Prose Element, shall be informative.
-    </p>
-    
-    <p class="note">
-      Informative JSON Schema resource definitions can be provided as examples, e.g.,
-      to demonstrate how to define an extension to another JSON Schema resource
-      through the “additionalProperties” or “additionalItems” keywords.
-    </p>
-  </section>
-  
-  <section id="sec-version">
-    <h3>Version</h3>
-    
-    <p>
-      Whenever a SMPTE JSON Schema resource is provided, the Engineering Document
-      shall provide an informative reference to the JSON Schema language specification
-      to which it conforms (e.g., JSON Schema, as shown in the Bibliography).
-    </p>
-    
-    <p>
-      A SMPTE JSON Schema resource shall use the <code>$schema</code> keyword in the root schema
-      object.
-    </p>
-    
-    <p class="note">
-      the <code>$schema</code> keyword is both used as JSON Schema dialect identifier and
-      as the identifier of a resource which is itself a JSON Schema resource to
-      evaluate conformance to that dialect.
-    </p>
-    
-    <p class="note">
-      JSON Schema resources can comprise subschemas, where portions of a root
-      schema document are separately identifiable by a URI-reference that are not
-      absolute and/or contain non-empty fragments.  For example,
-      <code>https://smpte-ra.org/schemas/2120-2/2021/smpte-tlx-items/definitions/rationalType</code>
-      is a reference to a subschema within the SMPTE JSON Schema resource
-      https://smpte-ra.org/schemas/2120-2/2021/smpte-tlx-items where the subschema
-      represents the constraints for a JSON structure representing a rational value.
-    </p>
-    
-  </section>
-  <section>
-    <h3>External Definitions</h3>
-    
-    <p>
-      The defining document of any externally-defined JSON Schema resource shall be
-      included as an informative reference.
-    </p>
-  </section>
-  
-  <section>
-    <h3>Valid Definitions</h3>
-    
-    <p>
-      All SMPTE JSON Schema resources specified in an Engineering Document shall be
-      valid with respect to the JSON Schema resource(s) identified by the value of the
-      <code>$schema</code> keyword(s) therein.
-    </p>
-    
-    <p>
-      All SMPTE JSON Schema resources should be validated against the meta-schema
-      specified by their <code>$schema</code> keyword(s).
-    </p>
-  </section>
-  
-  <section>
-    <h3>Publication</h3>
-    
-    All Additional Elements of Engineering Documents conforming to JSON Schema shall
-    be publicly retrievable at an HTTP URI chosen by the Director of Engineering.
-  </section>
-  
-  <section id="sec-keyword-order">
-    <h3>Keyword Order</h3>
-    
-    <p>The following keywords should appear as the first keywords in any SMPTE JSON Schema resource in this order:</p>
-    
-    <ul>
-      <li><code>$schema,</code> as specified in <a href="#sec-version"></a></li>
-      <li><code>$id,</code> as specified in <a href="#sec-id-keyword"></a>; and,</li>
-      <li><code>$comment,</code> as specified in <a
-      href="#sec-cc-license-schema-resources"></a>.</li>
-    </ul>
-  </section>
-</section>
 
-<section>
-  <h2>Copyright and License</h2>
-  
-  <section>
-    <h3>License</h3>
-    
-    <p>
-      Any SMPTE JSON structure or SMPTE JSON Schema resource, whether provided within
-      the prose or as an Additional Element of an Engineering Document, shall be
-      licensed according to <a href="#sec-json-doc-license"></a>.
-    </p>
-    
-    <p class="note">
-      The license portion of Annex A is verbatim the BSD-3-Clause license
-      available at <a href="https://spdx.org/licenses/BSD-3-Clause.html">https://spdx.org/licenses/BSD-3-Clause.html</a>.
-    </p>
   </section>
-  
-  <section id="sec-cc-license-schema-resources">
-    <h3>Copyright and License in SMPTE JSON Schema resources</h3>
-    
-    Any SMPTE JSON Schema resource shall include the copyright and license
-    provided in <a href="#sec-json-doc-license"></a> in the form of the
-    <code>$comment</code> element specified in <a href="#sec-cc-license-element"></a>.
+
+  <section class="annex" id="sec-process-flowchart">
+    <h2>Process Flowchart (Informative)</h2>
+
+
+
   </section>
-</section>
 
-<section class="annex" id="sec-json-doc-license">
-  <h2>JSON Document License</h2>
-<pre>
-Copyright (c), Society of Motion Pictures and Television Engineers. 
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met: 
-
-1. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer. 
-
-2. Redistributions in binary form must reproduce the above copyright notice,
-this list of conditions and the following disclaimer in the documentation and/or
-other materials provided with the distribution. 
-
-3. Neither the name of the copyright holder nor the names of its contributors
-may be used to endorse or promote products derived from this software without
-specific prior written permission. 
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
-ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-</pre>
-</section>
-
-<section class="annex" id="sec-cc-license-element">
-  <h2>Copyright and License Element</h2>
-
-<p>
-  The following JSON elements present the SMPTE copyright notice and the JSON
-  Schema identifier, a URI, which is useable as a URL to access the JSON Schema
-  Definition Document which presents, among other things, the JSON Document
-  License shown in <a href="#sec-json-doc-license"></a>.
-</p>
-
-<pre>"$comment": "Copyright (c), Society of Motion Pictures and Television Engineers. Licensed under BSD-3-Clause (https://spdx.org/licenses/BSD-3-Clause.html)."</pre>
-
-<p>The following example JSON Schema incorporates the above element in
-accordance with <a href="#sec-cc-license-schema-resources"></a>, with the initial
-keyword order recommended in <a href="#sec-keyword-order"></a>.</p>
+  <section class="annex" id="sec-tc-recommendation">
+    <h2>TC Recommendation</h2>
 
 <pre>
-{
-  "$schema": "https://json-schema.org/draft/2020-12/meta/core",
-  "$id": "https://smpte-ra.org/json-schema/2199-1/2022/foo",
-  "$comment": "Copyright (c), Society of Motion Pictures and Television Engineers. Licensed under BSD-3-Clause (https://spdx.org/licenses/BSD-3-Clause.html).",
-  "title": "foo",
-  "type": "object",
-  "description": "This is an example schema for a fictitious foo object.",
-  "examples": [
-    {
-      "bar": "zyzx"
-    }
-  ],
-  "properties": {
-    "bar": {
-      "$id": "#bar",
-      "title": "bar",
-      "type": "string",
-      "description": "A fictitious short string element.",
-      "minLength":1,
-      "maxLength":4
-    }
-  },
-  "required": [ "bar" ]
-}  
+As specified in SMPTE Administrative Guideline AG-22, the TC recommends that the Committee Draft of
+<-document number-> be made available as a Public CD with the following announcement:
+
+<-brief text appropriate for a public announcement of the Public CD->
+
+The members of the TC are reminded of their obligations to notify the TC Chair if they are aware, based
+on their actual personal knowledge, of patents or patent applications that might contain Essential Claims
+to a technology being proposed for inclusion in the Public CD.
 </pre>
 
-</section>
+  </section>
 
-<section id="sec-bibliographic-references">
-  <ul>
-    <li><cite id="bib-draft-bhutton-json-schema-00">IETF
-    draft-bhutton-json-schema-00</cite>, Wright, A., H. Andrews; B. Hutton, G.
-    Dennis, "JSON Schema: A Media Type for Describing JSON Documents", Work in
-    Progress, December 8, 2020,
-    https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-00
-    </li>
-  </ul>
-</section>
+  <section class="annex" id="sec-availability-notices">
+    <h2>Availability Notices</h2>
+
+    <section id="sec-contributor-license-agreement-cla-notice">
+      <h3>Contributor License Agreement (CLA) notice</h3>
+
+<pre>
+Please be aware that all contributions to this material are being conducted in accordance with the SMPTE
+Standards Operations Manual, which is accessible on the SMPTE website with the Society Bylaws:
+
+https://www.smpte.org/about/policies-and-governance
+
+Your comments and contributions, whether as a member or guest, are governed by these provisions and
+any comment or contribution made by you indicates your acknowledgement that you understand and are
+complying with the full form of the Operations Manual. Please take careful note of the sections requiring
+contributors to inform the Committee of personal knowledge of any claims under any issued patent or any
+patent application that likely would be infringed by an implementation of this material. This general
+reminder is not a substitute for a contributor’s responsibility to fully read, understand, and comply with the
+full Standards Operations Manual
+</pre>   
+
+    </section>
+
+    <section id="sec-copyright-notice">
+      <h3>Copyright notice</h3>
+
+<pre>
+Copyright © by the Society of Motion Picture and Television Engineers. All rights reserved. No part of this
+material may be reproduced, by any means whatsoever, without the prior written permission of the
+Society of Motion Picture and Television Engineers
+</pre>
+
+    </section>
+
+    <section id="sec-patent-notice">
+      <h3>Patent notice</h3>
+
+<pre>
+Attention is drawn to the possibility that some of the elements of this material may be the subject of patent
+rights. SMPTE shall not be held responsible for identifying any or all such patent rights.
+</pre>
+
+    </section>
+
+  </section>
+
+  <section class="annex" id="sec-notice-of-fcd">
+    <h2>Notice of FCD</h2>
+
+<pre>
+This Committee Draft was made available by the Society of Motion Picture and Television Engineers for a
+public review period, which ended on <-start date of the FCD ballot->. The document is now being
+processed for publication. Note that the published document may ultimately differ from this Committee
+Draft. 
+</pre>
+
+  </section>
 
 </body>
 
